@@ -1,0 +1,3 @@
+const String webProfile = "https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/3.jpg";
+const String webAppbarProfile = "https://pixlr.com/images/index/remove-bg.webp";
+const String userProfile = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.hootsuite.com%2Funderstanding-image-copyright%2F&psig=AOvVaw1Wypp0ZTRm_IeddMlEec3b&ust=1673865113571000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCMDh_c2vyfwCFQAAAAAdAAAAABAZ";
