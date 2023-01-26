@@ -1,16 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/constant/color.dart';
 import 'package:whatsapp/features/landing/screens/landing_screen.dart';
 import 'package:whatsapp/firebase_options.dart';
 import 'package:whatsapp/router.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
   );
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,17 +25,14 @@ class MyApp extends StatelessWidget {
       title: 'Whatsapp',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: backgroundColor,
-        appBarTheme: const AppBarTheme(
-          color: appBarColor
-        )
-      ),
-      home:  const LandingScreen(),
-     onGenerateRoute: (settings) => generateRoute(settings),
-     // const ResponsiveLayout(
-     //   mobileScreenLayout: MobileScreenLayout(),
-     //   webScreenLayout: WebScreenLayout(),
-     // ),
+          scaffoldBackgroundColor: backgroundColor,
+          appBarTheme: const AppBarTheme(color: appBarColor)),
+      home: const LandingScreen(),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      // const ResponsiveLayout(
+      //   mobileScreenLayout: MobileScreenLayout(),
+      //   webScreenLayout: WebScreenLayout(),
+      // ),
     );
   }
 }

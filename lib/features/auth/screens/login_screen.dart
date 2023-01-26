@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp/common/utils/utils.dart';
 import 'package:whatsapp/common/widgets/custom_button.dart';
 import 'package:whatsapp/constant/color.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:whatsapp/features/auth/controller/auth_controller.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   static const routeName = "/login-screen";
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final phoneNumberController = TextEditingController();
 
-  Country? county;
+  Country? country;
 
   @override
   void dispose() {
@@ -24,14 +27,25 @@ class _LoginScreenState extends State<LoginScreen> {
     phoneNumberController.dispose();
   }
 
-  void pickCountry()
-  {
-    showCountryPicker(context: context, onSelect: (Country selectedCountry)
-    {
-        setState(() {
-          county = selectedCountry;
+  void pickCountry() {
+    showCountryPicker(
+        context: context,
+        onSelect: (Country selectedCountry) {
+          setState(() {
+            country = selectedCountry;
+          });
         });
-    });
+  }
+
+  void sendPhoneNumber() {
+    String phoneNumber = phoneNumberController.text.trim();
+    if (country != null && phoneNumber.isNotEmpty) {
+      ref.read(authControllerProvider).signInWithPhone(context, '+${country!.phoneCode}$phoneNumber');
+    }
+    else
+    {
+      showSnackBar(context: context, content: "Please fill out all field");
+    }
   }
 
   @override
@@ -52,18 +66,18 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const Text("WhatsApp will need to verify your phone number"),
                 const SizedBox(height: 10),
-                TextButton(onPressed: pickCountry, child: const Text('Pick Country')),
+                TextButton(
+                    onPressed: pickCountry, child: const Text('Pick Country')),
                 Row(
                   children: [
-                     if(county != null)
-                       Text("+${county!.phoneCode}"),
-
+                    if (country != null) Text("+${country!.phoneCode}"),
                     const SizedBox(
                       width: 10,
                     ),
                     SizedBox(
                       width: size.width * 0.7,
                       child: TextField(
+                        keyboardType: TextInputType.number,
                         controller: phoneNumberController,
                         decoration: const InputDecoration(
                           hintText: 'phone number',
@@ -79,7 +93,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(
               width: 90,
-                child: CustomButton(text: 'NEXT', callback: () {  },),
+              child: CustomButton(
+                text: 'NEXT',
+                callback: sendPhoneNumber,
+              ),
             )
           ],
         ),

@@ -1,3 +1,4 @@
 const String webProfile = "https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/3.jpg";
 const String webAppbarProfile = "https://pixlr.com/images/index/remove-bg.webp";
 const String userProfile = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.hootsuite.com%2Funderstanding-image-copyright%2F&psig=AOvVaw1Wypp0ZTRm_IeddMlEec3b&ust=1673865113571000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCMDh_c2vyfwCFQAAAAAdAAAAABAZ";
+const String profile = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.boredpanda.com%2Fworlds-most-beautiful-nigerian-girl-jare-but-mofe%2F&psig=AOvVaw2NRB_mWbOIAghKmsdEJxnP&ust=1674778263357000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPDm4K354_wCFQAAAAAdAAAAABAE";
