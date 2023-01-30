@@ -53,5 +53,7 @@
     <string>Camera Library User</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>Microphone Library User</string>
+    <key>NSContactsUsageDescription</key>
+    <string>We need access to your contact list to enhance your experience by allowing you to easily connect with friends and family. It also enables us to provide you with personalized recommendations and improve the overall functionality of our service</string>
 </dict>
 </plist>

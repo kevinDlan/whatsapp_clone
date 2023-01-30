@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/common/widgets/loader.dart';
 import 'package:whatsapp/constant/color.dart';
 import 'package:whatsapp/features/auth/controller/auth_controller.dart';
+import 'package:whatsapp/features/chat/widgets/bottom_chat_field.dart';
 import 'package:whatsapp/models/user_model.dart';
 import 'package:whatsapp/widgets/chat_list.dart';
 
@@ -29,7 +30,7 @@ class MobileChartScreen extends ConsumerWidget {
                   Text(
                     snapshot.data!.isOnline ? 'online' : 'offline',
                     style: TextStyle(
-                       fontSize: 12,
+                        fontSize: 12,
                         fontWeight: FontWeight.normal,
                         color: snapshot.data!.isOnline
                             ? Colors.green
@@ -65,11 +66,11 @@ class MobileChartScreen extends ConsumerWidget {
         ],
       ),
       body: Column(
-        children: [
-          const Expanded(
+        children: const [
+          Expanded(
             child: ChatList(),
           ),
-
+          BottomChatField(),
         ],
       ),
     );

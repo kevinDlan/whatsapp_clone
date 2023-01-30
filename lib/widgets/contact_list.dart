@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/constant/color.dart';
 import 'package:whatsapp/constant/infos.dart';
-import 'package:whatsapp/screens/mobile_chat_screen.dart';
+import 'package:whatsapp/features/chat/screens/mobile_chat_screen.dart';
 
 class ContactList extends StatelessWidget {
   const ContactList({Key? key}) : super(key: key);
@@ -18,8 +18,8 @@ class ContactList extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const MobileChartScreen()));
+                  //Navigator.of(context).push(MaterialPageRoute(
+                  //    builder: (context) => const MobileChartScreen()));
                 },
                 child: ListTile(
                   title: Text(
